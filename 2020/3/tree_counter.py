@@ -44,3 +44,24 @@ if __name__ == "__main__":
         current_position.y += 1
 
     print(f"hits={tree_hit_count}")
+
+    # Part 2
+    slopes = [
+        Position(1, 1),
+        Position(3, 1),
+        Position(5, 1),
+        Position(7, 1),
+        Position(1, 2),
+    ]
+    answer = 1
+    for slope in slopes:
+        current_position = Position(0, 0)
+        tree_hit_count = 0
+        while current_position.y < tree_map.height:
+            if tree_map.has_tree_at(current_position):
+                tree_hit_count += 1
+            current_position.x += slope.x
+            current_position.y += slope.y
+        print(f"{slope} hits={tree_hit_count}")
+        answer *= tree_hit_count
+    print(f"answer={answer}")
